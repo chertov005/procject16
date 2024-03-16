@@ -22,7 +22,7 @@ router.get('/' ,authToken, async(req , res) => {
         }
 
 
-            return res.status(200) .json({error:'you dont have permission for this route , please connect administrator !!!! '})
+            return res.status(200) .json({error:'you dont have permission for this route , please connect administrator  '})
 
        
 
