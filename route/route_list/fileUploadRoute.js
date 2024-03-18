@@ -6,28 +6,24 @@ router.post('/' ,async(req , res) => {
 
     try {
 
+
         let myFile = req.files.myFile ;
-
-        if(myFile.size <= 1024 *1024 * 2) {
-
-            return myFile.mv(`public/image/${myFile.name}` , (err) => {
-
-                if(err) {
-                    return res.json(err)
+        if(myFile.size <= 1024 * 1024 * 4) {
+            return myFile.mv(`public/image/${myFile.name}` , (error) => {
+                if(error) {
+                    return res.status(401) .json(error)
                 }
 
-                return res.json({message:'success file upload'})
-
+                else {
+                    return res.json({message:'success upload file'})
+                }
             })
 
         }
-
-        else{
-            return res.json({message:'size of file over 2 Mb'})
+        
+        else {
+            return res.json({message:'size over 4 MB  error '})
         }
-  
-
-
 
 
     } catch (error) {
