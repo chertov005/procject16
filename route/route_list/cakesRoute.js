@@ -7,11 +7,12 @@ router.get('/' , async(req , res) => {
 
     let perPage = 5
     let page = req.query.page-1 || 0
-    let myFilter = {}
-    if(req.query.s) {
-        searchExp = new RegExp(req.query.s , 'i')
-        myFilter = {$or:[{name:searchExp} , {info:searchExp}]}
+    let s = req.query.s 
+    if(s) {
+        searchExp = new RegExp(s,'i') 
+         myFilter = {$or:[{name:searchExp},{info:searchExp}]}
     }
+
 
     try {
         
