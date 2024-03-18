@@ -5,13 +5,17 @@ const app = express() ;
 const cors = require('cors') ;
 require('./DataBase/config/mongoose_connect');
 const {routeInit} = require('./route/config/routeInit');
-require('dotenv').config();
+const fileUpload = require('express-fileupload');
+
 
 
 const server = http.createServer(app) ;
 
 
 app.use(cors());
+app.use(fileUpload({
+    limits:{fileSize:1024*1024*5}
+}))
 app.use(express.json());
 app.use(express.static(path.join(__dirname ,'public')));
 routeInit(app);
