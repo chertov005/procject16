@@ -5,19 +5,33 @@ const router = express.Router() ;
 router.post('/' ,async(req , res) => {
 
     try {
-        
-        return req.files.myImage.mv(`public/image/${req.files.myImage.name}` ,(err) => {
 
-            if(err) {
-                return res.status(401).json(err)
-            }
+        let myFile = req.files.myFile ;
 
-            return res.json({message:'success upload file !! '})
+        if(myFile.size <= 1024 *1024 * 2) {
 
-        })
+            return myFile.mv(`public/image/${myFile.name}` , (err) => {
+
+                if(err) {
+                    return res.json(err)
+                }
+
+                return res.json({message:'success file upload'})
+
+            })
+
+        }
+
+        else{
+            return res.json({message:'size of file over 2 Mb'})
+        }
+  
+
+
+
 
     } catch (error) {
-        return res.status(500).json({message:'internal server error, try later. '})
+        return res.status(500).json({message:'internal server error, try later1. '})
     }
 
 });
