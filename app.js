@@ -5,7 +5,7 @@ const app = express() ;
 const cors = require('cors') ;
 require('./DataBase/config/mongoose_connect');
 const {routeInit} = require('./route/config/routeInit');
-const fileUpload = require('express-fileupload');
+const fileUpload = require('express-fileupload')
 
 
 

@@ -6,7 +6,8 @@ router.get('/' , async(req , res) => {
 
     try {
         
-        return res.status(200) .json({message:'hello to project16 '})
+        return res.status(200) .json({message:'my index route'})
+
 
     } catch (error) {
         return res.status(500).json({message:'internal server error 500'})
